@@ -1,0 +1,38 @@
+post:
+  summary: Create a new author
+  tags: [Authors]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+          example:
+            name: "Jose Rivera"
+            stack: "MEAN"
+  responses:
+    "201":
+      description: Autor creado con éxito
+      content:
+        application/json:
+          example:
+            status: 201
+            data:
+              id: 1
+              name: "Jose Rivera"
+              stack: "MEAN"
+    "406":
+      description: No se recibieron datos válidos
+      content:
+        application/json:
+          example:
+            status: 406
+            message: "No se recibieron datos válidos"
+    "500":
+      description: Error interno del servidor
+      content:
+        application/json:
+          example:
+            status: 500
+            message: "Error interno del servidor"

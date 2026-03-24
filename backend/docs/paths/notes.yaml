@@ -1,0 +1,89 @@
+post:
+  summary: Create a new note
+  tags: [Notes]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+            title:
+              type: string
+            content:
+              type: string
+            priority:
+              type: integer
+          example:
+            id: 1
+            title: "Nota ejemplo"
+            content: "Contenido de la nota"
+            priority: 2
+  responses:
+    "201":
+      description: Nota creada con éxito
+      content:
+        application/json:
+          example:
+            status: 201
+            data:
+              id: 1
+              title: "Nota ejemplo"
+              content: "Contenido de la nota"
+              priority: 2
+    "406":
+      description: No se recibieron datos válidos
+      content:
+        application/json:
+          example:
+            status: 406
+            message: "Invalid note data"
+    "500":
+      description: Error interno del servidor
+      content:
+        application/json:
+          example:
+            status: 500
+            message: "Error creating note"
+
+get:
+  summary: Get notes by order of priority
+  tags: [Notes]
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+  responses:
+    "200":
+      description: Notas encontradas
+      content:
+        application/json:
+          example:
+            status: 200
+            data:
+              - id: 1
+                title: "Nota ejemplo"
+                content: "Contenido de la nota"
+                priority: 2
+              - id: 2
+                title: "Otra nota"
+                content: "Contenido de la otra nota"
+                priority: 1
+    "204":
+      description: No se encontró la nota
+      content:
+        application/json:
+          example:
+            status: 204
+            message: "No note found"
+    "500":
+      description: Error interno del servidor
+      content:
+        application/json:
+          example:
+            status: 500
+            message: "Error fetching note"

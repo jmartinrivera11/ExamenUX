@@ -1,0 +1,16 @@
+openapi: 3.0.0
+info:
+  title: Micro-Blog Notas API
+  version: 1.0.0
+  description: API para gestionar notas de un micro-blog, incluyendo autores y sus notas
+
+servers:
+  - url: http://localhost:3000
+    description: Servidor local para desarrollo
+  
+paths:
+  /api/authors:
+    $ref: './paths/authors.yaml'
+  
+  /api/notes:
+    $ref: './paths/notes.yaml'
